@@ -4,10 +4,17 @@
   "description": "",
   "main": "index.js",
   "type": "module",
+  "engines": {
+    "node": "v16.17.0",
+    "npm":"8.15.0"
+  },
   "scripts": {
-    "server": "nodemon server --ignore client",
-    "client": "npm start --prefix client ",
-    "start": "concurrently --kill-others-on-fail \"npm run server\" \" npm run client\""
+    "client-install": "npm install --prefix client",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "start": "node server.js",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "keywords": [],
   "author": "",
